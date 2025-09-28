@@ -162,6 +162,31 @@ nav {
     }
 }
 
+.hero blockquote {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 20px auto 10px;
+    color: var(--gray);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 3.5s forwards;
+    font-style: italic;
+    border-left: 3px solid var(--accent);
+    padding-left: 20px;
+}
+
+.hero cite {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    color: var(--gray);
+    opacity: 0;
+    animation: fadeIn 1s ease-out 3.5s forwards;
+    display: block;
+    text-align: center;
+    font-style: normal;
+    font-weight: 500;
+}
+
 .hero p {
     font-size: 1.2rem;
     max-width: 700px;
@@ -207,6 +232,163 @@ nav {
 
 .btn-outline:hover {
     background: rgba(100, 255, 218, 0.1);
+}
+
+/* About Me Section */
+.about {
+    padding: 80px 0;
+    background: var(--dark-blue);
+    position: relative;
+    overflow: hidden;
+}
+
+.about::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(100, 255, 218, 0.03) 0%, transparent 70%);
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(180deg);
+    }
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    color: var(--white);
+}
+
+.about-text h2 span {
+    color: var(--accent);
+}
+
+.about-text h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent);
+    margin-top: 15px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.about-text p:last-of-type {
+    margin-bottom: 30px;
+}
+
+.about-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.highlight-item {
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--accent);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+    background: rgba(100, 255, 218, 0.2);
+    transform: translateY(-2px);
+}
+
+.about-avatar {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-container {
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(45deg, var(--light-blue) 0%, var(--dark-blue) 100%);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid rgba(100, 255, 218, 0.3);
+    transition: all 0.3s ease;
+}
+
+.avatar-container:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(100, 255, 218, 0.2);
+}
+
+.avatar-placeholder {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(100, 255, 218, 0.05) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--accent);
+    border: 3px solid rgba(100, 255, 218, 0.2);
+}
+
+.avatar-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, transparent, rgba(100, 255, 218, 0.1), transparent);
+    border-radius: 25px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.avatar-container:hover::before {
+    opacity: 1;
+}
+
+.avatar-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 /* Section Titles */
@@ -556,6 +738,22 @@ footer {
     .foot-grid {
         gap: 10rem;
     }
+
+    .about-content {
+        grid-template-columns: 1fr 250px;
+        gap: 40px;
+    }
+
+    .avatar-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .avatar-placeholder {
+        width: 160px;
+        height: 160px;
+        font-size: 3rem;
+    }
 }
 
 /* Tablets */
@@ -606,11 +804,41 @@ footer {
         animation: fadeIn 1s ease-out 0.5s forwards;
     }
 
+    .hero blockquote,
+    .hero cite {
+        font-size: 1.1rem;
+        animation: fadeIn 1s ease-out 0.5s forwards;
+    }
+
+    .hero blockquote {
+        padding-left: 15px;
+        margin: 15px auto 8px;
+    }
+
+    .hero cite {
+        margin: 0 auto 15px;
+    }
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
         gap: 15px;
         animation: fadeIn 1s ease-out 1s forwards;
+    }
+
+    /* About */
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .about-text h2::after {
+        margin: 15px auto 0;
+    }
+
+    .about-highlights {
+        justify-content: center;
     }
 
     /* Sections */
@@ -636,8 +864,8 @@ footer {
 
     /* Projects */
     .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 25px;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
     }
 
     /* Contact */
@@ -694,9 +922,43 @@ footer {
         margin-bottom: 20px;
     }
 
+    .hero blockquote,
+    .hero cite {
+        font-size: 1rem;
+    }
+
+    .hero blockquote {
+        padding-left: 12px;
+        margin: 10px auto 5px;
+    }
+
+    .hero cite {
+        margin: 0 auto 10px;
+    }
+
     .btn {
         padding: 10px 20px;
         font-size: 0.9rem;
+    }
+
+    /* About */
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-text p {
+        font-size: 1rem;
+    }
+
+    .avatar-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .avatar-placeholder {
+        width: 120px;
+        height: 120px;
+        font-size: 2.5rem;
     }
 
     /* Sections */
@@ -786,5 +1048,20 @@ footer {
     .btn {
         padding: 8px 16px;
         font-size: 0.8rem;
+    }
+
+    .about-text h2 {
+        font-size: 1.6rem;
+    }
+
+    .avatar-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .avatar-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 2rem;
     }
 }
